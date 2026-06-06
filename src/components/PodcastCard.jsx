@@ -17,6 +17,15 @@ import { formatDate } from "../utils/formatDate";
  */
 
 export default function PodcastCard({ podcast, genres }) {
+    const genreSpans = podcast.genres.map((genreId) => {
+        const genreTitle = genres.find((genre) => genre.id === genreId)?.title;
+        return (
+            <span key={genreId} className="tag">
+                {genreTitle || "Unknown"}
+            </span>
+        );
+    });
+
     return (
         <div className="card">
             <img src={podcast.image} alt={podcast.title}/>
